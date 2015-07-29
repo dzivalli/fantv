@@ -23,3 +23,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara-webkit'
 end
+
+gem 'haml-rails'
