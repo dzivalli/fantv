@@ -1,0 +1,12 @@
+defaults: &defaults
+  env_name: localhost
+  image_url: https://image.tmdb.org/t/p/w92
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
