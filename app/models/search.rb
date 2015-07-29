@@ -50,18 +50,24 @@ class Search
   end
 
   def get_year(date)
-    date.is_a?(String) ? date.scan(/^(\d{4})/)[0][0] : 'Undefined'
+    date.is_a?(String) ? date.scan(/^(\d{4})/)[0][0] : ''
   end
 
   def years_for_tv(id)
     raw_data = get_json("/tv/#{id}")
     if raw_data.code == '200'
       tv_info = JSON.parse raw_data.body
-      "#{get_year(tv_info['first_air_date'])} - #{get_year(tv_info['last_air_date'])}"
+      first = get_year(tv_info['first_air_date'])
+      last = get_year(tv_info['last_air_date'])
+      first.empty? && last.empty? ? '' : "#{first} - #{last}"
     end
   end
 
   def photo_url(path)
-    "http://image.tmdb.org/t/p/w92#{path}" if path =~ /.jpg$/
+    if path =~ /.jpg$/
+      "http://image.tmdb.org/t/p/w92#{path}"
+    else
+      'default.png'
+    end
   end
 end
