@@ -33,15 +33,16 @@ class Search
       case result['media_type']
         when 'movie'
           hash[:movies] << {name: result['title'],
-                            photo: result['poster_path'],
+                            photo: photo_url(result['poster_path']),
                             year: get_year(result['release_date'])}
         when 'tv'
           hash[:shows] << {name: result['name'],
-                           photo: result['poster_path'],
+                           photo: photo_url(result['poster_path']),
                            year: years_for_tv(result['id'])}
         when 'person'
           hash[:people] << {name: result['name'],
-                            photo: result['profile_path']}
+                            photo: photo_url(result['profile_path']),
+                            year: ''}
       end
     end
 
@@ -58,5 +59,9 @@ class Search
       tv_info = JSON.parse raw_data.body
       "#{get_year(tv_info['first_air_date'])} - #{get_year(tv_info['last_air_date'])}"
     end
+  end
+
+  def photo_url(path)
+    "http://image.tmdb.org/t/p/w92#{path}" if path =~ /.jpg$/
   end
 end
