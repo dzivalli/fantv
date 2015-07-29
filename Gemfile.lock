@@ -124,6 +124,8 @@ GEM
     raindrops (0.13.0)
     rake (10.4.2)
     ref (1.0.5)
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -197,6 +199,7 @@ DEPENDENCIES
   oj
   quiet_assets
   rails (= 4.1.0)
+  responders
   rspec-rails
   sass-rails (~> 4.0.3)
   therubyracer
