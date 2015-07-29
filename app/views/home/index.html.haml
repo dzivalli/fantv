@@ -1,0 +1,16 @@
+.row
+  .col-md-offset-2.col-md-8
+    = form_tag search_path, remote: true do
+      .form-group
+        = text_field_tag :text, nil, class: 'form-control', placeholder: 'Search...'
+.results
+  .row
+    .col-md-4
+      %h3.text-center
+        MOVIES
+    .col-md-4
+      %h3.text-center
+        SHOWS
+    .col-md-4
+      %h3.text-center
+        PEOPLE
