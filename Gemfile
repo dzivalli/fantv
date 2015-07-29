@@ -22,6 +22,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara-webkit'
+  gem 'json_spec'
 end
 
 gem 'haml-rails'
