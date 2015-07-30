@@ -29,3 +29,4 @@ gem 'haml-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'responders'
 gem 'ejs'
+gem 'rails_12factor', group: :production
