@@ -1,7 +1,10 @@
 $ ->
-  $('#text').on 'input', ->
-    $.get 'search', {text: $(this).val()}, success
+  $('#text').on 'input', (e) ->
+    clearTimeout @timeout
+    @timeout = setTimeout(go, 1000)
 
+go = ->
+  $.get 'search', {text: $('#text').val()}, success
 
 success = (data) ->
   if data.total_results == 0
@@ -11,6 +14,7 @@ success = (data) ->
     $('.movies').html(render_template(data.movies))
     $('.shows').html(render_template(data.shows))
     $('.people').html(render_template(data.people))
+    $('.message').html('')
     $('.results').show()
 
 render_template = (json_data) ->
